@@ -26,6 +26,6 @@ function productDetailsTemplate(product) {
     document.getElementById('productImage').alt = product.NameWithoutBrand;
     document.getElementById('productPrice').textContent = product.FinalPrice;
     document.getElementById('productColor').textContent = product.Colors[0].ColorName;
-    document.getElementById('productDesc').textContent = product.DescriptionHtmlSimple;
+    document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
     document.getElementById("addToCart").dataset.id = product.Id;
 }
