@@ -5,8 +5,9 @@ loadHeaderFooter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
-
+  const cartFooter = document.querySelector(".cart-footer-hide");
   if (cartItems.length === 0) {
+    cartFooter.style.display = "none";
     document.querySelector(".product-list").innerHTML =
       "<p>Your cart is empty.</p>";
     return;
@@ -17,6 +18,7 @@ function renderCartContents() {
   });
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  cartFooter.style.display = "block";
   document.getElementById("cart-total").textContent = `Total: $${total.toFixed(2)}`;
 }
 
