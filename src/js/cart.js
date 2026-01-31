@@ -11,16 +11,20 @@ function renderCartContents() {
       "<p>Your cart is empty.</p>";
     return;
   }
-
+  let total = 0;
+  cartItems.forEach(item => { 
+    total += parseFloat(item.FinalPrice)
+  });
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.getElementById("cart-total").textContent = `Total: $${total.toFixed(2)}`;
 }
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimarySmall}"
       alt="${item.Name}"
     />
   </a>
