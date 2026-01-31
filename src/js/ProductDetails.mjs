@@ -24,7 +24,7 @@ renderProductDetails(){
 function productDetailsTemplate(product) {
     document.querySelector('h3').textContent = product.Brand.Name;
     document.querySelector('h2').textContent = product.NameWithoutBrand;
-    document.getElementById('productImage').src = product.Image;
+    document.getElementById('productImage').src = product.Images.PrimaryLarge;
     document.getElementById('productImage').alt = product.NameWithoutBrand;
     document.getElementById('productPrice').textContent = product.FinalPrice;
     document.getElementById('productColor').textContent = product.Colors[0].ColorName;
