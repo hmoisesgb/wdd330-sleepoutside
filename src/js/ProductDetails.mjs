@@ -13,8 +13,19 @@ async init(){
 }
 addProductToCart(){
   const cartItems = getLocalStorage("so-cart") || []; // get cart array of items from local storage if null set to empty array
-  cartItems.push(this.product); // add the product to the cartItems array
-  setLocalStorage("so-cart", cartItems); // save updated cart array to local storage
+  if (!cartItems.find(item => item.Id === this.product.Id)){
+    this.product.Quantity = 1;
+    cartItems.push(this.product); // add the product to the cartItems array
+    setLocalStorage("so-cart", cartItems); // save updated cart array to local storage
+  }
+  else{
+    this.product = cartItems.find(item => item.Id === this.product.Id);
+    let quantity = parseInt(this.product.Quantity);
+    quantity += 1;
+    this.product.Quantity = quantity;
+    setLocalStorage("so-cart", cartItems);
+  }
+  
 }
 renderProductDetails(){
     productDetailsTemplate(this.product);
