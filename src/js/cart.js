@@ -3,9 +3,15 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
+const checkOutButton = document.getElementById("checkout-button");
+checkOutButton.addEventListener("click", () => {
+  window.location.href = "../checkout/index.html";
+});
+
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
   const cartFooter = document.querySelector(".cart-footer-hide");
+  const cartButtons = document.querySelector(".cart-buttons-hide");
   if (cartItems.length === 0) {
     cartFooter.style.display = "none";
     document.querySelector(".product-list").innerHTML =
@@ -19,6 +25,7 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   cartFooter.style.display = "block";
+  cartButtons.style.display = "block";
   document.getElementById("cart-total").textContent =
     `Total: $${total.toFixed(2)}`;
 }
