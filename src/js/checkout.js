@@ -16,7 +16,7 @@ zipCode.addEventListener("blur", () => {
 const form = document.getElementById("checkout-form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  if(!form.checkValidity()){
+  if (!form.checkValidity()) {
     form.reportValidity();
     return;
   }
