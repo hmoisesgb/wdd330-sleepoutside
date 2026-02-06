@@ -7,10 +7,7 @@ order.init();
 
 const zipCode = document.getElementById("zip");
 zipCode.addEventListener("blur", () => {
-  const zipValue = zipCode.value;
-  if (zipValue.length === 5) {
     order.calculateOrderTotal();
-  }
 });
 
 const form = document.getElementById("checkout-form");
